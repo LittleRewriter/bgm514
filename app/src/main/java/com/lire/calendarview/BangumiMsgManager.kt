@@ -3,7 +3,7 @@ package com.lire.calendarview
 class BangumiMsgManager private constructor(){
     private val dayBangumiMsg = List(7){
         mutableListOf<BangumiMsg>()
-}
+    }
 
     /**
      * @param day 星期几的编号，星期一是0

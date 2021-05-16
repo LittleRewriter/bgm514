@@ -1,5 +1,7 @@
 package com.lire.baseappearance
 
+import com.lire.netdatahandler.CalendarJsonHandler
+import com.lire.netdatahandler.testJson
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -11,7 +13,8 @@ import org.junit.Assert.*
  */
 class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
-
+    fun TestCorrectParsingCalendar() {
+        val json = CalendarJsonHandler(testJson)
+        json.parseJson()
     }
 }

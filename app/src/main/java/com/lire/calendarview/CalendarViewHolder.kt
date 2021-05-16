@@ -1,6 +1,7 @@
 package com.lire.calendarview
 
 import android.content.res.Resources
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,8 +18,11 @@ class CalendarViewHolder private constructor(itemView : View)
 
     fun bind(item : BangumiMsg) {
         bangumiName.text = item.bangumiName
-//        bangumiRank.text = Resources.getSystem().getString(R.string.bangumi_calender_list_ranking, item.avgScore.toString(), item.ranking.toString())
-        bangumiRank.text = "qwq"
+//        Log.d("TAG", "after")
+//        Log.d("TAG", Resources.getSystem().getString(R.string.bangumi_calender_list_ranking))
+        bangumiRank.text = "均分：${item.avgScore}  在看：${item.collection}"
+//        bangumiRank.text = Resources.getSystem().getString(R.string.bangumi_calender_list_ranking, item.avgScore.toString(), item.collection.toString())
+//        bangumiRank.text = "qwq"
     }
 
     companion object {

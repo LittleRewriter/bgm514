@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
-class CalendarViewAdapter(private val data:List<BangumiMsg>):
+class CalendarViewAdapter(private var data:List<BangumiMsg>):
     RecyclerView.Adapter<CalendarViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarViewHolder {
         return CalendarViewHolder.from(parent)
@@ -18,12 +18,17 @@ class CalendarViewAdapter(private val data:List<BangumiMsg>):
         return data.size
     }
 
+    fun resetData(data : List<BangumiMsg>) {
+        this.data = data
+        notifyDataSetChanged()
+    }
+
     companion object {
         fun createObjs() : List<BangumiMsg> {
             val lst = mutableListOf<BangumiMsg>()
             val ran = Random()
             repeat(10) {
-                lst.add(BangumiMsg("qwq", "qwq", ran.nextInt(100), "qwq", 233.3))
+                lst.add(BangumiMsg("qwq", "qwq", "qwq", ran.nextInt(100), "qwq", 233.3))
             }
             return lst
         }

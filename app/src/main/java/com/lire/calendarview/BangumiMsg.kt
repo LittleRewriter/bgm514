@@ -1,9 +1,10 @@
 package com.lire.calendarview
 
 data class BangumiMsg(
+    val id : String,
     val bangumiName : String,
     val picURL : String,
-    val ranking : Int,
+    val collection : Int,
     val jumpURL : String,
     val avgScore : Double
     )

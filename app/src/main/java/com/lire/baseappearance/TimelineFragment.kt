@@ -8,12 +8,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.lire.baseappearance.databinding.ActivityMainBinding
 import com.lire.baseappearance.databinding.FragmentTimelineBinding
+import com.lire.calendarview.BangumiMsgManager
 import com.lire.calendarview.CalendarViewAdapter
+import com.lire.netdatahandler.CalendarJsonHandler
+import com.lire.netdatahandler.testJson
 import java.util.*
 
 class TimelineFragment:Fragment() {
@@ -46,13 +47,16 @@ class TimelineFragment:Fragment() {
         }
     }
 
-    fun updateBottomName(firstDay : Calendar) {
+    fun updateBottomName(firstDay : Calendar, adapter: CalendarViewAdapter) {
         with(binding) {
-            val cnt : Sequence<View> = TimeTable.children
+            val children : Sequence<View> = TimeTable.children
             var t = 1
-            for (i in cnt) {
+            for ((idx, ele) in children.withIndex()) {
                 val pattern = getTargetString(t)
-                (i as Button).text = String.format(pattern, firstDay.get(Calendar.MONTH)+1, firstDay.get(Calendar.DAY_OF_MONTH))
+                (ele as Button).text = String.format(pattern, firstDay.get(Calendar.MONTH)+1, firstDay.get(Calendar.DAY_OF_MONTH))
+                (ele as Button).setOnClickListener {
+                    adapter.resetData(BangumiMsgManager.getInstance().getMsgsForWeekDay(idx))
+                }
                 firstDay.add(Calendar.DATE, 1)
                 ++t
             }
@@ -76,12 +80,19 @@ class TimelineFragment:Fragment() {
         super.onStart()
 
         val d = getFirstDayOfWeek()
-        updateBottomName(d)
 
+        Log.d("TAG", getString(R.string.bangumi_calender_list_ranking))
 //        binding.timelineRecycleView.layoutManager = LinearLayoutManager(this.context)
+        // this is just for test
+
+        var handler = CalendarJsonHandler(testJson)
+        handler.parseJson()
+
         val adapter = CalendarViewAdapter(CalendarViewAdapter.createObjs())
         binding.timelineRecycleView.layoutManager = StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL)
         binding.timelineRecycleView.adapter = adapter
+
+        updateBottomName(d, adapter)
 
     }
 }
