@@ -11,4 +11,13 @@
     <string name="banguminame_test">异世界魔王与召唤少女的奴隶魔术Omega</string>
     <string name="bangumi_calender_list_ranking">均分：%1$s  排名：%2$s</string>
     <string name="bangumi_list_picture_alter">番剧图片</string>
+    <string name="title_activity_subject">SubjectActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
