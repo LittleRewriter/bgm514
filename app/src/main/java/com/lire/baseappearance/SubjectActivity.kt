@@ -7,14 +7,20 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.lire.baseappearance.databinding.ActivitySubjectBinding
+import com.lire.restful.BgmAPI
+import com.lire.restful.BgmDataViewModel
+import com.lire.restful.BgmDataViewModelFactory
+import com.lire.restful.BgmRepositoryImpl
 import com.lire.subject.SubjectViewModel
 
 class SubjectActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivitySubjectBinding
     private lateinit var viewModel: SubjectViewModel
+    private lateinit var bgmViewModel : BgmDataViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +37,16 @@ class SubjectActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get(SubjectViewModel::class.java)
         binding.subject = viewModel
+
+        bgmViewModel = ViewModelProvider(this, BgmDataViewModelFactory(
+            BgmRepositoryImpl(BgmAPI.service))).get(BgmDataViewModel::class.java)
+
+        bgmViewModel.calendar.observe(this, Observer {
+
+        })
+
+        bgmViewModel.loadCalendarAsync()
+
         viewModel.createSubject()
         viewModel.subjectInfo.value?.character
             ?.filterIndexed { index, chara -> index % 2 == 0 }

@@ -1,5 +1,6 @@
 package com.lire.baseappearance
 
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -88,7 +89,7 @@ class TimelineFragment:Fragment() {
         var handler = CalendarJsonHandler(testJson)
         handler.parseJson()
 
-        val adapter = CalendarViewAdapter(CalendarViewAdapter.createObjs())
+        val adapter = CalendarViewAdapter(CalendarViewAdapter.createObjs(), requireContext())
         binding.timelineRecycleView.layoutManager = StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL)
         binding.timelineRecycleView.adapter = adapter
 

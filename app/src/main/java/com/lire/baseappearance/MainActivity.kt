@@ -55,9 +55,6 @@ class MainActivity : AppCompatActivity() {
             toolbar.title = "bgm514"
             setSupportActionBar(toolbar)
             bottomNavigation.setupWithNavController(findNavController(R.id.navHost))
-
-            
-
         }
     }
 }
