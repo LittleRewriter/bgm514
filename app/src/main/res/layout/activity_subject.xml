@@ -1,372 +1,366 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SubjectActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.BaseAppearance.AppBarOverlay">
+    <data>
+        <variable
+            name="subject"
+            type="com.lire.subject.SubjectViewModel" />
+    </data>
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.BaseAppearance.PopupOverlay" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <include layout="@layout/content_subject" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
-
-    <LinearLayout
-        android:id="@+id/BangumiView"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="BangumiView"
-        android:foregroundTint="#009688"
-        android:orientation="vertical">
+        tools:context=".SubjectActivity">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.BaseAppearance.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/Theme.BaseAppearance.PopupOverlay" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <include layout="@layout/content_subject" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_dialog_email" />
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="300px"
-                android:layout_height="400px"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
-                android:scaleType="fitXY"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
-
-            <TextView
-                android:id="@+id/BangumiName"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:text="ただのテスト"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="@+id/imageView" />
-
-            <TextView
-                android:id="@+id/BangumiNameCN"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:singleLine="false"
-                android:text="关于这个明明只是一个测试而已但又特别特别长这件事"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/BangumiName" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center_horizontal"
-                android:text="动画   6.8（1433 votes） \n rank9999"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/BangumiNameCN" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/likeStatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="收藏状态"
-            android:textColor="#000000"
-            android:textSize="18dp" />
-
-        <TableLayout
-            android:id="@+id/likeView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:gravity="center">
-
-                <Button
-                    android:id="@+id/wishCollrct"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:width="120dp"
-                    android:text="想看：2333" />
-
-                <Button
-                    android:id="@+id/watchedCollect"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:width="120dp"
-                    android:text="看过：2333" />
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center">
-
-                <Button
-                    android:id="@+id/doingCollect"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:width="120dp"
-                    android:text="在看：2333" />
-
-                <Button
-                    android:id="@+id/onHoldCollect"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:width="120dp"
-                    android:text="搁置：2333" />
-
-                <Button
-                    android:id="@+id/dropCollect"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:width="120dp"
-                    android:text="抛弃：2333" />
-            </TableRow>
-
-        </TableLayout>
-
-        <TextView
-            android:id="@+id/statusTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="我的进度"
-            android:textColor="#000000"
-            android:textSize="18dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/sumChapterTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:background="#009688"
-                android:padding="8dp"
-                android:text="总集数"
-                android:textColor="#FFFFFF"
-                android:textColorHighlight="#009688"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/sumChapter"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="8dp"
-                android:gravity="center"
-                android:text="23"
-                android:textColor="#000000"
-                android:textSize="18dp" />
-
-            <TextView
-                android:id="@+id/updateChapterTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:background="#009688"
-                android:padding="8dp"
-                android:text="已更新"
-                android:textColor="#FFFFFF"
-                android:textColorHighlight="#009688"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/updateChapter"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="8dp"
-                android:gravity="center"
-                android:text="16"
-                android:textColor="#000000"
-                android:textSize="18dp" />
-
-            <TextView
-                android:id="@+id/watchedChapterTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:background="#009688"
-                android:padding="8dp"
-                android:text="已观看"
-                android:textColor="#FFFFFF"
-                android:textColorHighlight="#009688"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/watchedChapter"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="8dp"
-                android:gravity="center"
-                android:text="16"
-                android:textColor="#000000"
-                android:textSize="18dp" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-
-            <EditText
-                android:id="@+id/progressInput"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_weight="1"
-                android:width="120dp"
-                android:ems="10"
-                android:inputType="number" />
-
-            <Button
-                android:id="@+id/progressUpdateButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_weight="1"
-                android:width="120dp"
-                android:text="更新" />
-        </LinearLayout>
-
-
-        <TextView
-            android:id="@+id/sketchTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="剧情介绍"
-            android:textColor="#000000"
-            android:textSize="18dp" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:text="在不久的将来,电子技术飞速发展,电脑成为人们生活中不可缺少的一部分.主角的名字是本须和秀树,是个19岁的少年,由于考试失败,来到东京上补习班,过着贫穷潦倒的生活……\r\n到达东京的第一天,他很幸运的在垃圾堆捡到一个人型电脑,一直以来秀树都非常渴望拥有个人电脑.当他抱着她带返公寓后,却不知如何开机,在意想不到的地方找到开关并开启后,故事就此展开\r\n本须和秀树捡到了人型计算机〔唧〕。虽然不晓得她到底是不是〔Chobits〕，但她的身上似乎藏有极大的秘密。看到秀树为了钱而烦恼，唧出去找打工，没想到却找到了危险的工作！为了让秀树开心，唧开始到色情小屋打工。但她在遭到过度激烈的强迫要求之后失控。让周遭计算机因此而强制停摆。\r\n另一方面，秀树发现好友新保与补习班的清水老师有着不可告人的关系……" />
-
-        <TextView
-            android:id="@+id/characterTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="登场角色"
-            android:textColor="#000000"
-            android:textSize="18dp" />
-
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
-
-            <TableRow
+            <LinearLayout
+                android:id="@+id/BangumiView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center">
+                android:contentDescription="BangumiView"
+                android:foregroundTint="#009688"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="300px"
+                        android:layout_height="400px"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginBottom="24dp"
+                        android:scaleType="fitXY"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:srcCompat="@tools:sample/avatars" />
+
+                    <TextView
+                        android:id="@+id/BangumiName"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@{subject.subjectInfo.jpName}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+                    <TextView
+                        android:id="@+id/BangumiNameCN"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:singleLine="false"
+                        android:text="@{subject.subjectInfo.cnName}"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintTop_toBottomOf="@+id/BangumiName"
+                        tools:text="关于这个明明只是一个测试而已但又特别特别长这件事" />
+
+                    <!--            tools:text="动画   6.8（1433 votes） \n rank9999"-->
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center_horizontal"
+                        android:text="@{subject.TVValue}"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintTop_toBottomOf="@+id/BangumiNameCN" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/likeStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="收藏状态"
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
+
+                <TableLayout
+                    android:id="@+id/likeView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center">
+
+                        <Button
+                            android:id="@+id/wishCollrct"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:width="140dp"
+                            android:text="@{subject.getCollectValue(0)}" />
+
+                        <Button
+                            android:id="@+id/watchedCollect"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:width="140dp"
+                            android:text="@{subject.getCollectValue(1)}" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <Button
+                            android:id="@+id/doingCollect"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:width="120dp"
+                            android:text="@{subject.getCollectValue(2)}" />
+
+                        <Button
+                            android:id="@+id/onHoldCollect"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:width="120dp"
+                            android:text="@{subject.getCollectValue(3)}" />
+
+                        <Button
+                            android:id="@+id/dropCollect"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:width="120dp"
+                            android:text="@{subject.getCollectValue(4)}" />
+                    </TableRow>
+
+                </TableLayout>
+
+                <TextView
+                    android:id="@+id/statusTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="我的进度"
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
 
                 <LinearLayout
-                    android:id="@+id/characterEven"
-                    android:layout_width="180dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/sumChapterTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:background="#009688"
+                        android:padding="8dp"
+                        android:text="总集数"
+                        android:textColor="#FFFFFF"
+                        android:textColorHighlight="#009688"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/sumChapter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="8dp"
+                        android:gravity="center"
+                        android:text="@{subject.subjectInfo.sumChapter}"
+                        android:textColor="#000000"
+                        android:textSize="18dp"
+                        tools:text="23" />
+
+                    <TextView
+                        android:id="@+id/updateChapterTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:background="#009688"
+                        android:padding="8dp"
+                        android:text="已更新"
+                        android:textColor="#FFFFFF"
+                        android:textColorHighlight="#009688"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/updateChapter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="8dp"
+                        android:gravity="center"
+                        android:text="@{subject.subjectInfo.viewedChapter}"
+                        android:textColor="#000000"
+                        android:textSize="18dp"
+                        tools:text="23" />
+
+                    <!--                <TextView-->
+                    <!--                    android:id="@+id/watchedChapterTitle"-->
+                    <!--                    android:layout_width="wrap_content"-->
+                    <!--                    android:layout_height="wrap_content"-->
+                    <!--                    android:layout_marginHorizontal="10dp"-->
+                    <!--                    android:background="#009688"-->
+                    <!--                    android:padding="8dp"-->
+                    <!--                    android:text="已观看"-->
+                    <!--                    android:textColor="#FFFFFF"-->
+                    <!--                    android:textColorHighlight="#009688"-->
+                    <!--                    android:textSize="18sp" />-->
+
+                    <!--                <TextView-->
+                    <!--                    android:id="@+id/watchedChapter"-->
+                    <!--                    android:layout_width="wrap_content"-->
+                    <!--                    android:layout_height="match_parent"-->
+                    <!--                    android:layout_marginHorizontal="8dp"-->
+                    <!--                    android:gravity="center"-->
+                    <!--                    android:text="16"-->
+                    <!--                    android:textColor="#000000"-->
+                    <!--                    android:textSize="18dp" />-->
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <EditText
+                        android:id="@+id/progressInput"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_weight="1"
+                        android:width="120dp"
+                        android:ems="10"
+                        android:inputType="number" />
+
+                    <Button
+                        android:id="@+id/progressUpdateButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_weight="1"
+                        android:width="120dp"
+                        android:text="更新" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/sketchTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="剧情介绍"
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:text="@{subject.subjectInfo.sketch}"
+                    tools:text="在不久的将来,电子技术飞速发展,电脑成为人们生活中不可缺少的一部分.主角的名字是本须和秀树,是个19岁的少年,由于考试失败,来到东京上补习班,过着贫穷潦倒的生活……\r\n到达东京的第一天,他很幸运的在垃圾堆捡到一个人型电脑,一直以来秀树都非常渴望拥有个人电脑.当他抱着她带返公寓后,却不知如何开机,在意想不到的地方找到开关并开启后,故事就此展开\r\n本须和秀树捡到了人型计算机〔唧〕。虽然不晓得她到底是不是〔Chobits〕，但她的身上似乎藏有极大的秘密。看到秀树为了钱而烦恼，唧出去找打工，没想到却找到了危险的工作！为了让秀树开心，唧开始到色情小屋打工。但她在遭到过度激烈的强迫要求之后失控。让周遭计算机因此而强制停摆。\r\n另一方面，秀树发现好友新保与补习班的清水老师有着不可告人的关系……" />
+
+                <TextView
+                    android:id="@+id/characterTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="登场角色"
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/characterEven"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill|fill_vertical"
+                        android:gravity="clip_vertical"
+                        android:orientation="vertical" />
+
+                    <LinearLayout
+                        android:id="@+id/characterOdd"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill"
+                        android:orientation="vertical" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/staffTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Staff角色"
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
+
+                <LinearLayout
+                    android:id="@+id/staffList"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"></LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/characterOdd"
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+            </LinearLayout>
+        </ScrollView>
 
-                </LinearLayout>
-            </TableRow>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
 
-        </TableLayout>
-
-        <TextView
-            android:id="@+id/staffTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Staff"
-            android:textColor="#000000"
-            android:textSize="18dp" />
-
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <LinearLayout
-                    android:id="@+id/staffEven"
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"></LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/staffOdd"
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-            </TableRow>
-
-        </TableLayout>
-
-    </LinearLayout>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
