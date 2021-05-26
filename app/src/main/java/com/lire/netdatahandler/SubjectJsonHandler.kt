@@ -670,10 +670,10 @@ class SubjectJsonParser(val JSONstr : String) {
                 val character_list = obj.get("crt").asJsonArray
                 val character_list_arr = ArrayList<Chara>()
                 character_list.forEach {
-                    val name = it.asJsonObject["name"].asString
+                    val characterName = it.asJsonObject["name"].asString
                     val name_cn = it.asJsonObject["name_cn"].asString
                     val show_name = when(name_cn == "") {
-                        true -> name
+                        true -> characterName
                         else -> name_cn
                     }
                     val role_name = it.asJsonObject["role_name"].asString
@@ -688,10 +688,10 @@ class SubjectJsonParser(val JSONstr : String) {
                 val staff_list = obj.get("staff").asJsonArray
                 val staff_list_arr = ArrayList<Staff>()
                 staff_list.forEach {
-                    val name = it.asJsonObject["name"].asString
+                    val staffName = it.asJsonObject["name"].asString
                     val name_cn = it.asJsonObject["name_cn"].asString
                     val show_name = when(name_cn == "") {
-                        true -> name
+                        true -> staffName
                         else -> name_cn
                     }
                     val jobs = it.asJsonObject["jobs"].asJsonArray.map { i -> i.asString }
