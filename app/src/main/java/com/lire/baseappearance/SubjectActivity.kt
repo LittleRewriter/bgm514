@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.ContextMenu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
@@ -15,6 +16,7 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import coil.load
 import com.lire.baseappearance.databinding.ActivitySubjectBinding
 import com.lire.netdatahandler.SubjectJsonParser
 import com.lire.restful.BgmAPI
@@ -117,12 +119,14 @@ class SubjectActivity : AppCompatActivity() {
 
     private fun setBgmViewModelObserve(it: String) {
         viewModel.subjectInfo.value = SubjectJsonParser(it).parseJson()
+        binding.subjectMainImage.load(viewModel.subjectInfo.value?.imageURL)
         viewModel.subjectInfo.value?.character
                 ?.filterIndexed { index, chara -> index % 2 == 0 }
                 ?.forEach { it ->
                     val view = layoutInflater.inflate(R.layout.character_view, null)
                     view.findViewById<TextView>(R.id.tvCharacterName).text = it.name
                     view.findViewById<TextView>(R.id.tvCharacterType).text = it.type
+                    view.findViewById<ImageView>(R.id.imageCharacter).load(it.img)
                     val params = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, 200)
                     params.circleRadius = 10
                     params.topMargin = 8
@@ -136,6 +140,7 @@ class SubjectActivity : AppCompatActivity() {
                     val view = layoutInflater.inflate(R.layout.character_view, null)
                     view.findViewById<TextView>(R.id.tvCharacterName).text = it.name
                     view.findViewById<TextView>(R.id.tvCharacterType).text = it.type
+                    view.findViewById<ImageView>(R.id.imageCharacter).load(it.img)
                     val params = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, 200)
                     params.circleRadius = 10
                     params.topMargin = 8

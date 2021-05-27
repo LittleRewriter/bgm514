@@ -26,7 +26,8 @@ data class SubjectInfo (
     val sketch : String,
     val character : ArrayList<Chara>,
     val staff : ArrayList<Staff>,
-    val typeStr : String
+    val typeStr : String,
+    val imageURL : String
 ) {
     val tvValue
         get() = run {

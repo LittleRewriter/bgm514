@@ -27,7 +27,7 @@ class SubjectJsonParser(val JSONstr : String) {
                 val rank = obj?.get("rank")?.getAsNullableString()?:""
                 val eps = obj?.get("eps")?.getAsNullableDouble()?:0
                 val epsCount = obj?.get("eps_count")?.getAsNullableDouble()?:0
-                val image = obj?.get("images")?.getAsNullableJsonObject()?.get("small")?.getAsNullableString()
+                val image = obj?.get("images")?.getAsNullableJsonObject()?.get("common")?.getAsNullableString()?:""
                 val collection = obj?.get("collection")?.getAsNullableJsonObject()
                 val collection_num : ArrayList<Int> = ArrayList(listOf<Int>(
                     collection?.get("wish")?.getAsNullableInt()?:0,
@@ -75,10 +75,10 @@ class SubjectJsonParser(val JSONstr : String) {
                 Log.d("Subject", "p3")
 
                 val subject = SubjectInfo(
-                    id,
-                    name,
-                    cnName,
-                    when(type) {
+                    bangumiID = id,
+                    jpName = name,
+                    cnName = cnName,
+                    type = when(type) {
                         1 -> TypeOfSubject.BOOK
                         2 -> TypeOfSubject.ANIME
                         3 -> TypeOfSubject.MUSIC
@@ -86,9 +86,15 @@ class SubjectJsonParser(val JSONstr : String) {
                         6 -> TypeOfSubject.REAL
                         else -> TypeOfSubject.GAME
                     },
-                    score.toString(), total_count, rank, collection_num,
-                    epsCount.toString(), eps.toString(), summary,
-                    character_list_arr, staff_list_arr,
+                    avgScore =  score.toString(),
+                    votes = total_count,
+                    rank = rank,
+                    collectionAmount = collection_num,
+                    sumChapter = epsCount.toString(),
+                    viewedChapter = eps.toString(),
+                    sketch = summary,
+                    character = character_list_arr,
+                    staff = staff_list_arr,
                         when(type) {
                             1 -> "书籍"
                             2 -> "动画"
@@ -96,7 +102,8 @@ class SubjectJsonParser(val JSONstr : String) {
                             4 -> "三次元"
                             5 -> "音乐"
                             else -> ""
-                        }
+                        },
+                    imageURL = image
                 )
                 return subject
             }

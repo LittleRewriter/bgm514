@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@drawable/ic_baseline_myfav" />
+            app:srcCompat="@drawable/ic_launcher_background" />
 
         <ScrollView
             android:id="@+id/SubjectScrollView"
@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/imageView"
+                        android:id="@+id/subjectMainImage"
                         android:layout_width="300px"
                         android:layout_height="400px"
                         android:layout_marginStart="24dp"
@@ -81,8 +81,8 @@
                         android:layout_marginTop="10dp"
                         android:text="@{subject.subjectInfo.jpName}"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView"
-                        app:layout_constraintTop_toTopOf="@+id/imageView" />
+                        app:layout_constraintStart_toEndOf="@+id/subjectMainImage"
+                        app:layout_constraintTop_toTopOf="@+id/subjectMainImage" />
 
                     <TextView
                         android:id="@+id/BangumiNameCN"
@@ -95,7 +95,7 @@
                         android:textColor="#000000"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintStart_toEndOf="@+id/subjectMainImage"
                         app:layout_constraintTop_toBottomOf="@+id/BangumiName"
                         tools:text="关于这个明明只是一个测试而已但又特别特别长这件事" />
 
@@ -111,7 +111,7 @@
                         android:textColor="#000000"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintStart_toEndOf="@+id/subjectMainImage"
                         app:layout_constraintTop_toBottomOf="@+id/BangumiNameCN" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

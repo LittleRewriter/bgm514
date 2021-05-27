@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.lire.baseappearance.R
 import com.lire.baseappearance.SubjectActivity
 
@@ -26,7 +27,7 @@ class CalendarViewHolder private constructor(itemView : View)
 //        Log.d("TAG", "after")
 //        Log.d("TAG", Resources.getSystem().getString(R.string.bangumi_calender_list_ranking))
         bangumiRank.text = "均分：${item.avgScore}  在看：${item.collection}"
-
+        bangumiPic.load(item.picURL)
         itemView.setOnClickListener {
             val intent = Intent(context, SubjectActivity::class.java).apply {
                 putExtra("targetID", item.id)
