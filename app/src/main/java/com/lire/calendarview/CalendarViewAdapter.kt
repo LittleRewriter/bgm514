@@ -29,10 +29,6 @@ class CalendarViewAdapter(private var data:List<BangumiMsg>, private val context
     companion object {
         fun createObjs() : List<BangumiMsg> {
             val lst = mutableListOf<BangumiMsg>()
-            val ran = Random()
-            repeat(10) {
-                lst.add(BangumiMsg("qwq", "qwq", "qwq", ran.nextInt(100), "qwq", 233.3))
-            }
             return lst
         }
     }

@@ -34,6 +34,8 @@ class SubjectActivity : AppCompatActivity() {
         setContentView(R.layout.activity_subject)
         setSupportActionBar(findViewById(R.id.subjectToolbar))
 
+        val targetID = intent.getStringExtra("targetID")
+
         binding = DataBindingUtil.setContentView(this,R.layout.activity_subject)
         binding.lifecycleOwner = this
 
@@ -76,8 +78,9 @@ class SubjectActivity : AppCompatActivity() {
 
         registerForContextMenu(binding.updateStatusButton)
 
-
-        bgmViewModel.loadSubjectInfoAsync("233")
+        if (targetID != null) {
+            bgmViewModel.loadSubjectInfoAsync(id = targetID)
+        }
 
         setSupportActionBar(binding.subjectToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

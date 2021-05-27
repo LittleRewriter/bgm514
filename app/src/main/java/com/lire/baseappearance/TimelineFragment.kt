@@ -9,18 +9,23 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.OrientationHelper
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.lire.baseappearance.databinding.FragmentTimelineBinding
 import com.lire.calendarview.BangumiMsgManager
 import com.lire.calendarview.CalendarViewAdapter
 import com.lire.netdatahandler.CalendarJsonHandler
-import com.lire.netdatahandler.testJson
+import com.lire.restful.BgmAPI
+import com.lire.restful.BgmDataViewModel
+import com.lire.restful.BgmDataViewModelFactory
+import com.lire.restful.BgmRepositoryImpl
 import java.util.*
 
 class TimelineFragment:Fragment() {
 
     private lateinit var binding : FragmentTimelineBinding
+    private lateinit var bgmViewModel : BgmDataViewModel
 
     fun getFirstDayOfWeek() : Calendar {
         val calendar = Calendar.getInstance()
@@ -82,18 +87,26 @@ class TimelineFragment:Fragment() {
 
         val d = getFirstDayOfWeek()
 
-        Log.d("TAG", getString(R.string.bangumi_calender_list_ranking))
+//        Log.d("TAG", getString(R.string.bangumi_calender_list_ranking))
+        bgmViewModel = ViewModelProvider(requireActivity(), BgmDataViewModelFactory(
+        BgmRepositoryImpl(BgmAPI.service))).get(BgmDataViewModel::class.java)
 //        binding.timelineRecycleView.layoutManager = LinearLayoutManager(this.context)
         // this is just for test
-
-        var handler = CalendarJsonHandler(testJson)
-        handler.parseJson()
-
         val adapter = CalendarViewAdapter(CalendarViewAdapter.createObjs(), requireContext())
         binding.timelineRecycleView.layoutManager = StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL)
         binding.timelineRecycleView.adapter = adapter
 
         updateBottomName(d, adapter)
+
+        bgmViewModel.loadCalendarAsync()
+        bgmViewModel.calendar.observe(this, {
+            val handler = CalendarJsonHandler(it)
+            handler.parseJson()
+            adapter.resetData(BangumiMsgManager.getInstance().getMsgsForWeekDay(day=((Calendar.getInstance().get(Calendar.DAY_OF_WEEK))+5)%7))
+        })
+
+
+
 
     }
 }

@@ -24,7 +24,7 @@ fun JsonElement.getAsNullableInt() : Int? {
     return asInt
 }
 
-fun JsonElement.getAsNullableDouble() : Int? {
+fun JsonElement.getAsNullableDouble() : Double? {
     if (isJsonNull) return null
-    return asInt
+    return asDouble
 }

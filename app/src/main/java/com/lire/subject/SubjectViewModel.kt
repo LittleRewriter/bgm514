@@ -3,7 +3,6 @@ package com.lire.subject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.lire.netdatahandler.SubjectJsonParser
-import com.lire.netdatahandler.subjectStr
 
 class SubjectViewModel : ViewModel() {
     var subjectInfo : MutableLiveData<SubjectInfo> = MutableLiveData()

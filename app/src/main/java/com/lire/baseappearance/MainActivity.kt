@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationMenu
@@ -13,6 +14,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.lire.baseappearance.databinding.ActivityMainBinding
+import com.lire.restful.BgmAPI
+import com.lire.restful.BgmDataViewModel
+import com.lire.restful.BgmDataViewModelFactory
+import com.lire.restful.BgmRepositoryImpl
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -25,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     val tag : String = "LOG"
 
     private lateinit var binding : ActivityMainBinding
+    private lateinit var bgmViewModel : BgmDataViewModel
 
     private fun showLog(msg : Any) {
         Log.d(tag, msg.toString())
@@ -51,10 +57,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        bgmViewModel = ViewModelProvider(this, BgmDataViewModelFactory(
+                BgmRepositoryImpl(BgmAPI.service))).get(BgmDataViewModel::class.java)
+
         with(binding) {
             toolbar.title = "bgm514"
             setSupportActionBar(toolbar)
             bottomNavigation.setupWithNavController(findNavController(R.id.navHost))
         }
+
     }
 }

@@ -3,6 +3,7 @@ package com.lire.calendarview
 import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -27,7 +28,9 @@ class CalendarViewHolder private constructor(itemView : View)
         bangumiRank.text = "均分：${item.avgScore}  在看：${item.collection}"
 
         itemView.setOnClickListener {
-            val intent = Intent(context, SubjectActivity::class.java)
+            val intent = Intent(context, SubjectActivity::class.java).apply {
+                putExtra("targetID", item.id)
+            }
             context.startActivity(intent)
         }
 //        bangumiRank.text = Resources.getSystem().getString(R.string.bangumi_calender_list_ranking, item.avgScore.toString(), item.collection.toString())
