@@ -13,7 +13,7 @@ class SubjectJsonParser(val JSONstr : String) {
         try {
             val parser = JsonParser()
             val element = parser.parse(JSONstr)
-            Log.d("Subject", JSONstr)
+//            Log.d("Subject", JSONstr)
             if (element.isJsonObject()) {
                 val obj = element?.getAsNullableJsonObject()
                 val id = obj?.get("id")?.getAsNullableString()?:""
@@ -36,7 +36,7 @@ class SubjectJsonParser(val JSONstr : String) {
                     collection?.get("on_hold")?.getAsNullableInt() ?:0,
                     collection?.get("dropped")?.getAsNullableInt() ?:0
                 ))
-                Log.d("Subject", "p1")
+//                Log.d("Subject", "p1")
                 val t = obj?.get("crt")
                 val character_list = obj?.get("crt")?.getAsNullableJsonArray()
                 val character_list_arr = ArrayList<Chara>()
@@ -48,7 +48,7 @@ class SubjectJsonParser(val JSONstr : String) {
                         else -> name_cn
                     }
                     val role_name = it?.getAsNullableJsonObject()?.get("role_name")?.getAsNullableString()?:""
-                    Log.d("Subject", "p2")
+//                    Log.d("Subject", "p2")
                     // 主角、配角
                     val img_src = it?.getAsNullableJsonObject()?.get("images")?.getAsNullableJsonObject()?.get("grid")?.getAsNullableString()?:""
                     val cv = it?.getAsNullableJsonObject()?.get("actors")?.getAsNullableJsonArray()?.map {
@@ -72,7 +72,7 @@ class SubjectJsonParser(val JSONstr : String) {
                     staff_list_arr.add(Staff(show_name, jobs))
                 }
 
-                Log.d("Subject", "p3")
+//                Log.d("Subject", "p3")
 
                 val subject = SubjectInfo(
                     bangumiID = id,
@@ -95,7 +95,7 @@ class SubjectJsonParser(val JSONstr : String) {
                     sketch = summary,
                     character = character_list_arr,
                     staff = staff_list_arr,
-                        when(type) {
+                    typeStr = when(type) {
                             1 -> "书籍"
                             2 -> "动画"
                             3 -> "游戏"

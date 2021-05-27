@@ -61,10 +61,10 @@ class BgmDataViewModel(val bgmRepository: BgmRepository) : ViewModel(), Coroutin
         }
     }
 
-    fun loadSearchResultAsync(content : String) {
+    fun loadSearchResultAsync(content : String, start : Int) {
         viewModelScope.launch {
             val list = runCatching {
-                bgmRepository.getSearchResultAsync(content)
+                bgmRepository.getSearchResultAsync(content, start)
             }
             list.onSuccess {
                 _searchResult.value = it.data ?: ""

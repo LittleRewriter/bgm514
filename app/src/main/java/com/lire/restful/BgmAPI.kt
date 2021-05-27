@@ -29,8 +29,8 @@ interface BgmAPI {
     @GET("subject/{id}?app_id=bgm18556097b70b84c73")
     fun getSubjectInfo(@Path("id") id : String, @Query("responseGroup") responseGroup : String) : Call<String>
 
-    @GET("search/subject/{content}?app_id=bgm18556097b70b84c73")
-    fun getSearchResult(@Path("content") content : String) : Call<String>
+    @GET("search/subject/{content}?app_id=bgm18556097b70b84c73&responseGroup=small")
+    fun getSearchResult(@Path("content") content : String, @Query("start") start : Int) : Call<String>
 
     @GET("user/{username}?app_id=bgm18556097b70b84c73")
     fun getUserInfo(@Path("username") username : String) : Call<String>

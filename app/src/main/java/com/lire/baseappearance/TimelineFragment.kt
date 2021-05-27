@@ -104,9 +104,5 @@ class TimelineFragment:Fragment() {
             handler.parseJson()
             adapter.resetData(BangumiMsgManager.getInstance().getMsgsForWeekDay(day=((Calendar.getInstance().get(Calendar.DAY_OF_WEEK))+5)%7))
         })
-
-
-
-
     }
 }
