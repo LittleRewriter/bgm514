@@ -21,7 +21,7 @@
             android:theme="@style/Theme.BaseAppearance.AppBarOverlay">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+                android:id="@+id/subjectToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
@@ -41,7 +41,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp">
 
             <LinearLayout
                 android:id="@+id/BangumiView"
@@ -102,7 +103,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:gravity="center_horizontal"
-                        android:text="@{subject.TVValue}"
+                        android:text="@{@string/subject_fragment_tvInfo(subject.subjectInfo.typeStr, subject.subjectInfo.avgScore, subject.subjectInfo.votes, subject.subjectInfo.rank)}"
                         android:textColor="#000000"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -137,7 +138,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="10dp"
                             android:width="140dp"
-                            android:text="@{subject.getCollectValue(0)}" />
+                            android:text="@{@string/subject_fragment_collections(`想看`,subject.subjectInfo.collectionAmount.get(0)==null?``:subject.subjectInfo.collectionAmount.get(0))}" />
 
                         <Button
                             android:id="@+id/watchedCollect"
@@ -145,7 +146,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="10dp"
                             android:width="140dp"
-                            android:text="@{subject.getCollectValue(1)}" />
+                            android:text="@{@string/subject_fragment_collections(`看过`,subject.subjectInfo.collectionAmount.get(1)==null?``:subject.subjectInfo.collectionAmount.get(1))}" />
 
                     </TableRow>
 
@@ -160,7 +161,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="10dp"
                             android:width="120dp"
-                            android:text="@{subject.getCollectValue(2)}" />
+                            android:text="@{@string/subject_fragment_collections(`在看`,subject.subjectInfo.collectionAmount.get(2)==null?``:subject.subjectInfo.collectionAmount.get(2))}" />
 
                         <Button
                             android:id="@+id/onHoldCollect"
@@ -168,7 +169,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="10dp"
                             android:width="120dp"
-                            android:text="@{subject.getCollectValue(3)}" />
+                            android:text="@{@string/subject_fragment_collections(`搁置`,subject.subjectInfo.collectionAmount.get(3)==null?``:subject.subjectInfo.collectionAmount.get(3))}" />
 
                         <Button
                             android:id="@+id/dropCollect"
@@ -176,7 +177,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="10dp"
                             android:width="120dp"
-                            android:text="@{subject.getCollectValue(4)}" />
+                            android:text="@{@string/subject_fragment_collections(`抛弃`,subject.subjectInfo.collectionAmount.get(4)==null?``:subject.subjectInfo.collectionAmount.get(4))}" />
                     </TableRow>
 
                 </TableLayout>
@@ -356,6 +357,7 @@
                     android:id="@+id/staffList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     android:orientation="vertical"></LinearLayout>
 
             </LinearLayout>

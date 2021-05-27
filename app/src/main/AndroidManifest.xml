@@ -16,6 +16,9 @@
             android:name=".SubjectActivity"
             android:label="@string/title_activity_subject"
             android:theme="@style/Theme.BaseAppearance.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>

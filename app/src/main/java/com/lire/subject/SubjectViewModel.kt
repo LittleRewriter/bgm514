@@ -8,8 +8,16 @@ import com.lire.netdatahandler.subjectStr
 class SubjectViewModel : ViewModel() {
     var subjectInfo : MutableLiveData<SubjectInfo> = MutableLiveData()
     fun createSubject() {
-        subjectInfo.value = SubjectJsonParser(subjectStr).parseJson()
+//        subjectInfo.value = SubjectJsonParser(subjectStr).parseJson()
     }
+    fun getTypeName(e : TypeOfSubject) : String =
+        when(e) {
+            TypeOfSubject.BOOK -> "书籍"
+            TypeOfSubject.ANIME -> "动画"
+            TypeOfSubject.GAME -> "游戏"
+            TypeOfSubject.REAL -> "三次元"
+            TypeOfSubject.MUSIC -> "音乐"
+        }
     fun getTVValue() : String{
         val typeName = when(subjectInfo.value?.type) {
             TypeOfSubject.BOOK -> "书籍"

@@ -51,7 +51,7 @@ class BgmDataViewModel(val bgmRepository: BgmRepository) : ViewModel(), Coroutin
     fun loadSubjectInfoAsync(id : String) {
         viewModelScope.launch {
             val list = runCatching {
-                bgmRepository.getSubjectInfoAsync(id)
+                bgmRepository.getSubjectInfoAsync(id, "medium")
             }
             list.onSuccess {
                 _subjectInfo.value = it.data ?: ""

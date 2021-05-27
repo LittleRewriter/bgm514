@@ -747,20 +747,20 @@ class CalendarJsonHandler (val JSONstr : String) {
             val parser = JsonParser()
             val element = parser.parse(JSONstr)
             if (element.isJsonArray()) {
-                val arr = element.asJsonArray
-                arr.forEach {
-                    val items = it.asJsonObject.get("items")
-                    items.asJsonArray.forEach {
-                        val item = it.asJsonObject
-                        val id = item.get("id").asString
-                        val url = item.get("url").asString
-                        val type = item.get("type").asInt
-                        val name = item.get("name").asString
-                        val name_cn = item.get("name_cn").asString
-                        val air_weekday = item.get("air_weekday").asInt
-                        val score = item.get("rating").asJsonObject.get("score").asDouble
-                        val img = item.get("images").asJsonObject.get("medium").asString
-                        val collection = item.get("collection").asJsonObject.get("doing").asInt
+                val arr = element?.asJsonArray
+                arr?.forEach {
+                    val items = it?.asJsonObject?.get("items")
+                    items?.asJsonArray?.forEach {
+                        val item = it?.asJsonObject
+                        val id = item?.get("id")?.asString?:""
+                        val url = item?.get("url")?.asString?:""
+                        val type = item?.get("type")?.asInt?:2
+                        val name = item?.get("name")?.asString?:""
+                        val name_cn = item?.get("name_cn")?.asString?:""
+                        val air_weekday = item?.get("air_weekday")?.asInt?:0
+                        val score = item?.get("rating")?.asJsonObject?.get("score")?.asDouble?:0.0
+                        val img = item?.get("images")?.asJsonObject?.get("medium")?.asString?:""
+                        val collection = item?.get("collection")?.asJsonObject?.get("doing")?.asInt?:0
                         BangumiMsgManager.getInstance().addMsgForWeekDay(air_weekday-1, BangumiMsg(
                                 id,
                                 when {
@@ -773,7 +773,7 @@ class CalendarJsonHandler (val JSONstr : String) {
                 }
             }
         } catch (e : Exception) {
-
+            e.printStackTrace()
         }
     }
 }
