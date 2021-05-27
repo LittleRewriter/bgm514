@@ -5,6 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="android.view.View" />
         <variable
             name="subject"
             type="com.lire.subject.SubjectViewModel" />
@@ -32,17 +34,19 @@
         <include layout="@layout/content_subject" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
+            android:id="@+id/subjectFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@android:drawable/ic_dialog_email" />
+            app:srcCompat="@drawable/ic_baseline_myfav" />
 
         <ScrollView
+            android:id="@+id/SubjectScrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp">
+            android:layout_marginTop="60dp"
+            tools:visibility="visible">
 
             <LinearLayout
                 android:id="@+id/BangumiView"
@@ -187,7 +191,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="我的进度"
+                    android:text="集数信息"
                     android:textColor="#000000"
                     android:textSize="18dp" />
 
@@ -268,32 +272,6 @@
                 </LinearLayout>
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center">
-
-                    <EditText
-                        android:id="@+id/progressInput"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="10dp"
-                        android:layout_weight="1"
-                        android:width="120dp"
-                        android:ems="10"
-                        android:inputType="number" />
-
-                    <Button
-                        android:id="@+id/progressUpdateButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="10dp"
-                        android:layout_weight="1"
-                        android:width="120dp"
-                        android:text="更新" />
-                </LinearLayout>
-
-
                 <TextView
                     android:id="@+id/sketchTitle"
                     android:layout_width="match_parent"
@@ -362,6 +340,83 @@
 
             </LinearLayout>
         </ScrollView>
+
+        <FrameLayout
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:background="#FFFFFF"
+            android:visibility="@{subject.isClickToolBar ? View.VISIBLE : View.INVISIBLE}">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/updateStatusTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="40dp"
+                    android:text="观看状态"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/updateStatusButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="长按选择状态"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/updateStatusTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/updateStatusTextView" />
+
+                <TextView
+                    android:id="@+id/myScoreTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:text="我的评分"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="@+id/updateStatusTextView"
+                    app:layout_constraintStart_toStartOf="@+id/updateStatusTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/updateStatusTextView" />
+
+                <TextView
+                    android:id="@+id/myScoreUpdateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    app:layout_constraintBottom_toTopOf="@+id/myScoreSeekBar"
+                    app:layout_constraintEnd_toEndOf="@+id/myScoreSeekBar"
+                    app:layout_constraintStart_toStartOf="@+id/myScoreSeekBar" />
+
+                <SeekBar
+                    android:id="@+id/myScoreSeekBar"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:max="20"
+                    android:progress="16"
+                    app:layout_constraintEnd_toEndOf="@+id/updateStatusButton"
+                    app:layout_constraintStart_toStartOf="@+id/updateStatusButton"
+                    app:layout_constraintTop_toTopOf="@+id/myScoreTextView" />
+
+                <Button
+                    android:id="@+id/submitStatusButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="提交"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

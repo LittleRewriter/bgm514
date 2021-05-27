@@ -22,4 +22,9 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="subject_fragment_collections">%s：%s</string>
     <string name="subject_fragment_tvInfo">%s   均分%s（%s votes） \n rank %s</string>
+    <string name="view_status_want">想看</string>
+    <string name="view_status_watched">看过</string>
+    <string name="view_status_watching">再看</string>
+    <string name="view_status_placed">搁置</string>
+    <string name="view_status_giveup">抛弃</string>
 </resources>

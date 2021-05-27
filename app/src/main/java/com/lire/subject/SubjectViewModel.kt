@@ -7,6 +7,7 @@ import com.lire.netdatahandler.subjectStr
 
 class SubjectViewModel : ViewModel() {
     var subjectInfo : MutableLiveData<SubjectInfo> = MutableLiveData()
+    var isClickToolBar : MutableLiveData<Boolean> = MutableLiveData(false)
     fun createSubject() {
 //        subjectInfo.value = SubjectJsonParser(subjectStr).parseJson()
     }

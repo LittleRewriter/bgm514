@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/view_status_want"
+        android:title="@string/view_status_want" />
+    <item
+        android:id="@+id/view_status_watched"
+        android:title="@string/view_status_watched" />
+    <item
+        android:id="@+id/view_status_watching"
+        android:title="@string/view_status_watching" />
+    <item
+        android:id="@+id/view_status_placed"
+        android:title="@string/view_status_placed" />
+    <item
+        android:id="@+id/view_status_giveup"
+        android:title="@string/view_status_giveup" />
+</menu>
