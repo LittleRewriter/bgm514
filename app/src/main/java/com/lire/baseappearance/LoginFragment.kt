@@ -56,9 +56,6 @@ class LoginFragment:Fragment() {
 
         binding.profileCardView.setOnClickListener {
             showDialog()
-            if (usernameStr != null && usernameStr != "") {
-                bgmViewModel.loadUserInfoAsync(usernameStr!!)
-            }
         }
         bgmViewModel.userInfo.observe(this, Observer {
             userInfo = UserInfoJsonParser(it!!).parseJson()
@@ -69,6 +66,7 @@ class LoginFragment:Fragment() {
                 binding.profileImageView.load(userInfo!!.profile)
                 binding.userHitokotoTextView.text = userInfo!!.hitokoto
                 binding.usernameTextView.text = userInfo!!.name
+                bgmViewModel.setUserName(usernameStr!!)
             }
         })
     }
@@ -100,6 +98,9 @@ class LoginFragment:Fragment() {
         val editor = pref.edit()
         editor.putString(NAME_FIELD, name)
         editor.apply()
+        if (name != "") {
+            bgmViewModel.loadUserInfoAsync(name)
+        }
     }
 
 

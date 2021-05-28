@@ -82,6 +82,7 @@ class SubjectActivity : AppCompatActivity() {
         if (targetID != null) {
             bgmViewModel.loadSubjectInfoAsync(id = targetID)
         }
+        binding.subjectToolbar.title = ""
 
         setSupportActionBar(binding.subjectToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -130,6 +131,7 @@ class SubjectActivity : AppCompatActivity() {
     private fun setBgmViewModelObserve(it: String) {
         viewModel.subjectInfo.value = SubjectJsonParser(it).parseJson()
         binding.subjectMainImage.load(viewModel.subjectInfo.value?.imageURL)
+        binding.subjectToolbar.title = viewModel.subjectInfo.value?.jpName
         viewModel.subjectInfo.value?.character
                 ?.filterIndexed { index, chara -> index % 2 == 0 }
                 ?.forEach { it ->

@@ -61,6 +61,10 @@ class FavouriteFragment:Fragment() {
             }
         })
 
+        bgmViewModel.usernameStr.observe(this, {
+            it?.let {bgmViewModel.loadUserWatchingAsync(it)}
+        })
+
         binding.favToggleBtnGroup.check(R.id.favBtnAnime)
         binding.favToggleBtnGroup.addOnButtonCheckedListener { _, checkedId, _ ->
             var newCheckID = when(checkedId) {
