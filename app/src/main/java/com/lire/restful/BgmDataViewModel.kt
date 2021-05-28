@@ -34,6 +34,12 @@ class BgmDataViewModel(val bgmRepository: BgmRepository) : ViewModel(), Coroutin
     val userInfo : LiveData<String>
         get() = _userInfo
 
+    private val _userWatching = MutableLiveData<String>()
+    val userWatching : LiveData<String>
+        get() = _userWatching
+
+    var usernameStr : MutableLiveData<String> = MutableLiveData()
+
     fun loadCalendarAsync() {
         viewModelScope.launch {
 
@@ -98,6 +104,23 @@ class BgmDataViewModel(val bgmRepository: BgmRepository) : ViewModel(), Coroutin
                 _failMsg.value = it.message
             }
         }
+    }
+
+    fun loadUserWatchingAsync(userName: String) {
+        viewModelScope.launch {
+            val list = runCatching {
+                bgmRepository.getUserWatchingAsync(userName)
+            }
+            list.onSuccess {
+                _userWatching.value = it.data ?: ""
+            }.onFailure {
+                _failMsg.value = it.message
+            }
+        }
+    }
+
+    fun setUserName(name : String) {
+        usernameStr.value = name
     }
 
 }

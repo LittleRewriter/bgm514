@@ -1,5 +1,6 @@
 package com.lire.baseappearance
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -23,6 +24,8 @@ import com.lire.restful.BgmDataViewModel
 import com.lire.restful.BgmDataViewModelFactory
 import com.lire.restful.BgmRepositoryImpl
 import com.lire.userinfo.UserInfo
+import com.lire.utils.NAME_FIELD
+import com.lire.utils.PREF_FILE_NAME
 
 class LoginFragment:Fragment() {
     private lateinit var binding : FragmentLoginBinding
@@ -44,12 +47,16 @@ class LoginFragment:Fragment() {
             BgmRepositoryImpl(BgmAPI.service)
         )
         ).get(BgmDataViewModel::class.java)
+
+        val str = bgmViewModel.usernameStr.value
+        if (str != null && str != "") {
+            usernameStr = str
+            bgmViewModel.loadUserInfoAsync(usernameStr!!)
+        }
+
         binding.profileCardView.setOnClickListener {
             showDialog()
-            if (usernameStr == null || usernameStr == "") {
-                Snackbar.make(binding.profileCardView, "用户名不能为空！", Snackbar.LENGTH_LONG)
-                    .show()
-            } else {
+            if (usernameStr != null && usernameStr != "") {
                 bgmViewModel.loadUserInfoAsync(usernameStr!!)
             }
         }
@@ -75,9 +82,26 @@ class LoginFragment:Fragment() {
             .setNeutralButton("取消") {_,_ ->}
             .setPositiveButton("确定") {dialog, which ->
                 usernameStr = area.editText?.text?.toString()
+                storeUsername(usernameStr?:"")
+                if (usernameStr == null || usernameStr == "") {
+                    Snackbar.make(binding.profileCardView, "用户名不能为空！", Snackbar.LENGTH_LONG)
+                        .show()
+                }
             }
             .show()
 
     }
+
+    fun storeUsername(name : String) {
+        val pref = requireActivity().getSharedPreferences(
+            PREF_FILE_NAME,
+            Context.MODE_PRIVATE
+        )
+        val editor = pref.edit()
+        editor.putString(NAME_FIELD, name)
+        editor.apply()
+    }
+
+
 
 }

@@ -38,10 +38,7 @@ interface BgmAPI {
     @GET("user/{username}?app_id=bgm18556097b70b84c73")
     fun getUserInfo(@Path("username") username : String) : Call<String>
 
-    @GET("user/{username}/collections/{type}?app_id=bgm18556097b70b84c73")
-    fun getCollectionInfo(@Path("username") username: String, @Path("type") type:String) : Call<String>
-
-    @GET("user/{username}/collections/{type}?app_id=bgm18556097b70b84c73")
-    fun getCollectionInfo(@Path("username") username: String, @Path("type") type:String, @Query("max_result") max_result:Int) : Call<String>
+    @GET("user/{username}/collection?app_id=bgm18556097b70b84c73&cat=all_watching")
+    fun getCollectionInfo(@Path("username") username: String) : Call<String>
 
 }

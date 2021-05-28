@@ -8,4 +8,5 @@ interface BgmRepository {
     suspend fun getSearchResultWithTypeAsync(content : String, start : Int,type : Int) : Resource<String>
     suspend fun getSearchResultAsync(content : String, start : Int) : Resource<String>
     suspend fun getUserInfoAsync(username : String) : Resource<String>
+    suspend fun getUserWatchingAsync(username: String) : Resource<String>
 }

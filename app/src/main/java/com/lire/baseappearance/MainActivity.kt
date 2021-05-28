@@ -1,5 +1,6 @@
 package com.lire.baseappearance
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,8 @@ import com.lire.restful.BgmAPI
 import com.lire.restful.BgmDataViewModel
 import com.lire.restful.BgmDataViewModelFactory
 import com.lire.restful.BgmRepositoryImpl
+import com.lire.utils.NAME_FIELD
+import com.lire.utils.PREF_FILE_NAME
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -31,21 +34,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
     private lateinit var bgmViewModel : BgmDataViewModel
-
-    private fun showLog(msg : Any) {
-        Log.d(tag, msg.toString())
-    }
-
-    private fun showDatePicker() {
-        val builder = MaterialDatePicker.Builder.datePicker()
-        builder.setTitleText("请选择一个日期")
-        builder.setSelection(Date().time)
-        val picker = builder.build()
-        picker.addOnPositiveButtonClickListener {
-            tvInfo.text = formatDate(it)
-        }
-        picker.show(supportFragmentManager, null)
-    }
 
     private fun formatDate(l: Long): String {
         return SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format(Date(l))
@@ -61,11 +49,26 @@ class MainActivity : AppCompatActivity() {
         bgmViewModel = ViewModelProvider(this, BgmDataViewModelFactory(
                 BgmRepositoryImpl(BgmAPI.service))).get(BgmDataViewModel::class.java)
 
+        if (loadUsername() != "") {
+            val usernameStr = loadUsername()
+            bgmViewModel.setUserName(usernameStr)
+            bgmViewModel.loadUserInfoAsync(usernameStr)
+        }
+
         with(binding) {
             toolbar.title = "bgm514"
             setSupportActionBar(toolbar)
             bottomNavigation.setupWithNavController(findNavController(R.id.navHost))
         }
 
+    }
+
+    fun loadUsername() : String {
+        val pref = getSharedPreferences(
+            PREF_FILE_NAME,
+            Context.MODE_PRIVATE
+        )
+        val name = pref.getString(NAME_FIELD, "")
+        return name?:""
     }
 }

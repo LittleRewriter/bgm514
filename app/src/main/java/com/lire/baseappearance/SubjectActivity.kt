@@ -14,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.NavUtils
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import coil.load
@@ -104,6 +105,17 @@ class SubjectActivity : AppCompatActivity() {
         }
         binding.updateStatusButton.text = str
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> {
+//                NavUtils.navigateUpFromSameTask(this)
+                finish()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 
     private fun updateModelStatus() {

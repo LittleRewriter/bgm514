@@ -61,10 +61,6 @@ class SearchFragment:Fragment() {
                     if (!recyclerView.canScrollVertically(1)) {
                         currentAmount += 10
                         loadAsyncWithType()
-//                        if (searchText != null) {
-//                            bgmViewModel.loadSearchResultAsync(searchText!!, currentAmount)
-//
-//                        }
                     }
                 }
             }

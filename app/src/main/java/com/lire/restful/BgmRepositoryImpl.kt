@@ -72,4 +72,17 @@ internal class BgmRepositoryImpl constructor(private val api:BgmAPI) : BgmReposi
                 Resource.error(null,"failed")
             }
     }
+
+    override suspend fun getUserWatchingAsync(username: String): Resource<String> =
+        withContext(Dispatchers.IO) {
+            try {
+                logCoroutine("GetUserWatching", coroutineContext)
+                val watchingDeferred = async { api.getCollectionInfo(username).execute() }
+                val watchingResponse = watchingDeferred.await()
+                Log.e("TAG", watchingResponse.body().toString())
+                Resource.success(watchingResponse.body().toString())
+            } catch (e : Exception) {
+                Resource.error(null, "failed")
+            }
+        }
 }

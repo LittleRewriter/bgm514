@@ -6,13 +6,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/favToggleBtnGroup"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="myfav"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <Button
+            android:id="@+id/favBtnAnime"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="动画"
+            android:textIsSelectable="false" />
+
+        <Button
+            android:id="@+id/favBtnBook"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="书籍" />
+
+        <Button
+            android:id="@+id/favBtnSanjigenn"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="三次元" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/collectionView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/favToggleBtnGroup" />
 </androidx.constraintlayout.widget.ConstraintLayout>
