@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="动画"
+            android:text="@string/anime"
             android:textIsSelectable="false" />
 
         <Button
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="书籍" />
+            android:text="@string/books" />
 
         <Button
             android:id="@+id/favBtnSanjigenn"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="三次元" />
+            android:text="@string/sanjingenn" />
 
     </com.google.android.material.button.MaterialButtonToggleGroup>
 

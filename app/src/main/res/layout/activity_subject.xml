@@ -129,12 +129,8 @@
                     android:textColor="#000000"
                     android:textSize="18dp" />
 
-                <TableLayout
-                    android:id="@+id/likeView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
-                    <TableRow
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
@@ -146,6 +142,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="10dp"
                             android:width="140dp"
+                            style="@style/Widget.MaterialComponents.Button"
                             android:text="@{@string/subject_fragment_collections(`想看`,subject.subjectInfo.collectionAmount.get(0)==null?``:subject.subjectInfo.collectionAmount.get(0))}" />
 
                         <Button
@@ -154,50 +151,59 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="10dp"
                             android:width="140dp"
+                            style="@style/Widget.MaterialComponents.Button"
                             android:text="@{@string/subject_fragment_collections(`看过`,subject.subjectInfo.collectionAmount.get(1)==null?``:subject.subjectInfo.collectionAmount.get(1))}" />
 
-                    </TableRow>
+                    </LinearLayout>
 
-                    <TableRow
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center">
 
                         <Button
                             android:id="@+id/doingCollect"
+                            style="@style/Widget.MaterialComponents.Button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="10dp"
-                            android:width="120dp"
+                            android:minWidth="100dp"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="4dp"
                             android:text="@{@string/subject_fragment_collections(`在看`,subject.subjectInfo.collectionAmount.get(2)==null?``:subject.subjectInfo.collectionAmount.get(2))}" />
 
                         <Button
                             android:id="@+id/onHoldCollect"
+                            style="@style/Widget.MaterialComponents.Button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="10dp"
-                            android:width="120dp"
+                            android:minWidth="100dp"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="4dp"
                             android:text="@{@string/subject_fragment_collections(`搁置`,subject.subjectInfo.collectionAmount.get(3)==null?``:subject.subjectInfo.collectionAmount.get(3))}" />
 
                         <Button
                             android:id="@+id/dropCollect"
+                            style="@style/Widget.MaterialComponents.Button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="10dp"
-                            android:width="120dp"
+                            android:minWidth="100dp"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="4dp"
                             android:text="@{@string/subject_fragment_collections(`抛弃`,subject.subjectInfo.collectionAmount.get(4)==null?``:subject.subjectInfo.collectionAmount.get(4))}" />
-                    </TableRow>
+                    </LinearLayout>
 
-                </TableLayout>
 
                 <TextView
                     android:id="@+id/statusTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="集数信息"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/SumItemInfo"
                     android:textColor="#000000"
-                    android:textSize="18dp" />
+                    android:textSize="18sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -205,14 +211,14 @@
                     android:layout_marginVertical="10dp"
                     android:gravity="center">
 
-                    <TextView
+                    <Button
                         android:id="@+id/sumChapterTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
                         android:background="#009688"
                         android:padding="8dp"
-                        android:text="总集数"
+                        android:text="@string/SumItemAmount"
                         android:textColor="#FFFFFF"
                         android:textColorHighlight="#009688"
                         android:textSize="18sp" />
@@ -225,17 +231,17 @@
                         android:gravity="center"
                         android:text="@{subject.subjectInfo.sumChapter}"
                         android:textColor="#000000"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         tools:text="23" />
 
-                    <TextView
+                    <Button
                         android:id="@+id/updateChapterTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
                         android:background="#009688"
                         android:padding="8dp"
-                        android:text="已更新"
+                        android:text="@string/UpdatedSumValue"
                         android:textColor="#FFFFFF"
                         android:textColorHighlight="#009688"
                         android:textSize="18sp" />
@@ -248,7 +254,7 @@
                         android:gravity="center"
                         android:text="@{subject.subjectInfo.viewedChapter}"
                         android:textColor="#000000"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         tools:text="23" />
 
                     <!--                <TextView-->
@@ -280,10 +286,10 @@
                     android:id="@+id/sketchTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="剧情介绍"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/skectch_introduction"
                     android:textColor="#000000"
-                    android:textSize="18dp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/textView6"
@@ -298,10 +304,10 @@
                     android:id="@+id/characterTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="登场角色"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/located_character"
                     android:textColor="#000000"
-                    android:textSize="18dp" />
+                    android:textSize="18sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -330,17 +336,17 @@
                     android:id="@+id/staffTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="Staff角色"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/staff_character_textview"
                     android:textColor="#000000"
-                    android:textSize="18dp" />
+                    android:textSize="18sp" />
 
                 <LinearLayout
                     android:id="@+id/staffList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:orientation="vertical"></LinearLayout>
+                    android:layout_marginStart="20dp"
+                    android:orientation="vertical" />
 
             </LinearLayout>
         </ScrollView>
@@ -350,7 +356,8 @@
             android:layout_height="250dp"
             android:layout_gravity="center"
             android:background="#FFFFFF"
-            android:visibility="@{subject.isClickToolBar ? View.VISIBLE : View.INVISIBLE}">
+            android:visibility="@{subject.isClickToolBar ? View.VISIBLE : View.INVISIBLE}"
+            tools:visibility="gone">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -362,7 +369,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="40dp"
-                    android:text="观看状态"
+                    android:text="@string/viewed_status_text"
                     android:textColor="#000000"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -373,7 +380,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
-                    android:text="长按选择状态"
+                    android:text="@string/long_to_select_view"
                     app:layout_constraintBaseline_toBaselineOf="@+id/updateStatusTextView"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/updateStatusTextView" />
@@ -383,7 +390,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
-                    android:text="我的评分"
+                    android:text="@string/my_grade_view"
                     android:textColor="#000000"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="@+id/updateStatusTextView"
@@ -415,7 +422,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:text="提交"
+                    android:text="@string/submit_str_btn"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />

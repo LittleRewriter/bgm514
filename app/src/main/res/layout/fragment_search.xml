@@ -17,7 +17,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="输入搜索内容" />
+            android:hint="@string/input_text_area" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="全部"
+            android:text="@string/subede"
             android:textIsSelectable="false" />
 
         <Button
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="书籍" />
+            android:text="@string/book" />
 
         <Button
             android:id="@+id/typeBtnAnime"
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="动画" />
+            android:text="@string/anime" />
 
         <Button
             android:id="@+id/typeBtnMusic"
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="音乐" />
+            android:text="@string/music" />
 
         <Button
             android:id="@+id/typeBtnGame"
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="游戏" />
+            android:text="@string/game" />
 
         <Button
             android:id="@+id/typeBtnSanjigen"
@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="三次元" />
+            android:text="@string/sanjigenn" />
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <androidx.recyclerview.widget.RecyclerView

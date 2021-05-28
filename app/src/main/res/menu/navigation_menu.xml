@@ -6,20 +6,20 @@
         android:id="@+id/timelineFragment"
         android:icon="@drawable/ic_baseline_namahousou"
         android:orderInCategory="0"
-        android:title="每日放送" />
+        android:title="@string/namahousou" />
     <item
         android:id="@+id/searchFragment"
         android:icon="@drawable/ic_baseline_search"
         android:orderInCategory="1"
-        android:title="发现更多" />
+        android:title="@string/findmore" />
     <item
         android:id="@+id/favouriteFragment"
         android:icon="@drawable/ic_baseline_kannsei"
         android:orderInCategory="2"
-        android:title="进度管理" />
+        android:title="@string/progresskannri" />
     <item
         android:id="@+id/loginFragment"
         android:icon="@drawable/ic_baseline_userinfo"
         android:orderInCategory="3"
-        android:title="个人中心" />
+        android:title="@string/localcenter" />
 </menu>

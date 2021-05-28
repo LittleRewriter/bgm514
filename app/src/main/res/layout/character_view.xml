@@ -18,7 +18,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/people_avator" />
 
     <TextView
         android:id="@+id/tvCharacterName"
@@ -26,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="7dp"
         android:layout_marginTop="7dp"
-        android:text="TextView"
+        android:text="@string/textview"
         android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/imageCharacter"
         app:layout_constraintTop_toTopOf="@+id/imageCharacter" />
@@ -37,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="7dp"
         android:layout_marginBottom="7dp"
-        android:text="TextView"
+        android:text="@string/textview"
         app:layout_constraintBottom_toBottomOf="@+id/imageCharacter"
         app:layout_constraintStart_toEndOf="@+id/imageCharacter" />
 </androidx.constraintlayout.widget.ConstraintLayout>
