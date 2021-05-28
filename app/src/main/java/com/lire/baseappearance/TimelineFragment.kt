@@ -26,6 +26,7 @@ class TimelineFragment:Fragment() {
 
     private lateinit var binding : FragmentTimelineBinding
     private lateinit var bgmViewModel : BgmDataViewModel
+    private var selectedDate : Int = 0
 
     fun getFirstDayOfWeek() : Calendar {
         val calendar = Calendar.getInstance()
@@ -61,7 +62,14 @@ class TimelineFragment:Fragment() {
                 val pattern = getTargetString(t)
                 (ele as Button).text = String.format(pattern, firstDay.get(Calendar.MONTH)+1, firstDay.get(Calendar.DAY_OF_MONTH))
                 (ele as Button).setOnClickListener {
-                    adapter.resetData(BangumiMsgManager.getInstance().getMsgsForWeekDay(idx))
+                    if (idx != selectedDate) {
+                        selectedDate = idx
+                        adapter.resetData(BangumiMsgManager.getInstance().getMsgsForWeekDay(idx))
+                    }
+                }
+                if (firstDay.get(Calendar.DAY_OF_MONTH) == Calendar.getInstance().get(Calendar.DAY_OF_MONTH)) {
+                    TimeTable.check(ele.id)
+                    selectedDate = idx
                 }
                 firstDay.add(Calendar.DATE, 1)
                 ++t

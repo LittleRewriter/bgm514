@@ -87,6 +87,8 @@ class SubjectActivity : AppCompatActivity() {
         setSupportActionBar(binding.subjectToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        binding.subjectFab.load(R.drawable.ic_baseline_add_24)
+
     }
 
     override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {

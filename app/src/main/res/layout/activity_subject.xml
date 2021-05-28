@@ -39,7 +39,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@drawable/ic_launcher_background" />
+            android:backgroundTint="#FFFFFF"
+            android:backgroundTintMode="add"
+            android:contentDescription="提交按钮"
+            android:tint="@color/primaryTextColor"
+            app:srcCompat="@drawable/ic_baseline_add_24" />
 
         <ScrollView
             android:id="@+id/SubjectScrollView"

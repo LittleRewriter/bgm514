@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">bgm514</string>
     <string name="bgm_developer_id">bgm18556097b70b84c73</string>
-    <string name="monday">%1$d-%2$d\n月</string>
-    <string name="tuesday">%1$d-%2$d\n火</string>
-    <string name="wednesday">%1$d-%2$d\n水</string>
-    <string name="thursday">%1$d-%2$d\n木</string>
-    <string name="friday">%1$d-%2$d\n金</string>
-    <string name="saturday">%1$d-%2$d\n土</string>
-    <string name="sunday">%1$d-%2$d\n日</string>
+    <string name="monday">%1$d-%2$d 月</string>
+    <string name="tuesday">%1$d-%2$d 火</string>
+    <string name="wednesday">%1$d-%2$d 水</string>
+    <string name="thursday">%1$d-%2$d 木</string>
+    <string name="friday">%1$d-%2$d 金</string>
+    <string name="saturday">%1$d-%2$d 土</string>
+    <string name="sunday">%1$d-%2$d 日</string>
     <string name="banguminame_test">异世界魔王与召唤少女的奴隶魔术Omega</string>
     <string name="bangumi_calender_list_ranking">均分：%1$s  排名：%2$s</string>
     <string name="bangumi_list_picture_alter">番剧图片</string>

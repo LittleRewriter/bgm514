@@ -20,7 +20,7 @@ class CollectionViewHolder private constructor(itemView : View) : RecyclerView.V
 
     fun bind(item : UserCollection, context : Context) {
         collectionName.text = item.name
-        collectionDoAmount.text = item.doing.toString()
+        collectionDoAmount.text = String.format("在看：%d", item.doing)
         collectionPicture.load(item.images)
         itemView.setOnClickListener {
             val intent = Intent(context, SubjectActivity::class.java).apply {
