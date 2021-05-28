@@ -1,5 +1,4 @@
 package com.lire.netdatahandler
-
 import android.util.Log
 import com.google.gson.JsonParser
 import com.lire.subject.Chara

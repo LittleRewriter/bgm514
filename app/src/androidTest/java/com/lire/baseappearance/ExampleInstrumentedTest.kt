@@ -3,7 +3,8 @@ package com.lire.baseappearance
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.lire.netdatahandler.SearchJsonHandler
-import com.lire.netdatahandler.searchJsonSample
+import com.lire.netdatahandler.UserInfoJsonParser
+import com.lire.userinfo.UserInfo
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -25,7 +26,28 @@ class ExampleInstrumentedTest {
     }
     @Test
     fun testSearchJson() {
-        val searchJson = SearchJsonHandler(searchJsonSample)
-        searchJson.parseJson()
+//        val searchJson = SearchJsonHandler()
+//        searchJson.parseJson()
+    }
+
+    @Test
+    fun testUserJson() {
+        val userJson = UserInfoJsonParser("""
+            {
+                "id": 291948,
+                "url": "http:\/\/bgm.tv\/user\/littlerewriter",
+                "username": "littlerewriter",
+                "nickname": "littlerewriter",
+                "avatar": {
+                    "large": "http:\/\/lain.bgm.tv\/pic\/user\/l\/000\/29\/19\/291948.jpg?r=1519282002",
+                    "medium": "http:\/\/lain.bgm.tv\/pic\/user\/m\/000\/29\/19\/291948.jpg?r=1519282002",
+                    "small": "http:\/\/lain.bgm.tv\/pic\/user\/s\/000\/29\/19\/291948.jpg?r=1519282002"
+                },
+                "sign": "\u6c38\u304d\u4e16\u306e \u9060\u306e\u7720\u308a\u306e \u307f\u306a\u76ee\u3056\u3081 \u6ce2\u4e57\u308a\u8239\u306e \u97f3\u306e\u3088\u304d ...",
+                "usergroup": 10
+            }
+        """.trimIndent())
+        println(userJson.parseJson())
+        assertNotEquals(userJson.parseJson(), null)
     }
 }
