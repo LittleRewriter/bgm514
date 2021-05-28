@@ -74,6 +74,19 @@ class BgmDataViewModel(val bgmRepository: BgmRepository) : ViewModel(), Coroutin
         }
     }
 
+    fun loadSearchResultWithTypeAsync(content : String, start: Int, type : Int) {
+        viewModelScope.launch {
+            val list = runCatching {
+                bgmRepository.getSearchResultWithTypeAsync(content, start, type)
+            }
+            list.onSuccess {
+                _searchResult.value = it.data ?: ""
+            }.onFailure {
+                _failMsg.value = it.message
+            }
+        }
+    }
+
     fun loadUserInfoAsync(userName : String) {
         viewModelScope.launch {
             val list = runCatching {

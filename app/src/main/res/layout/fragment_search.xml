@@ -21,6 +21,75 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/typeToggleBtnGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:gravity="fill"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchTextField"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <Button
+            android:id="@+id/typBtnAll"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="全部"
+            android:textIsSelectable="false" />
+
+        <Button
+            android:id="@+id/typeBtnBook"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="书籍" />
+
+        <Button
+            android:id="@+id/typeBtnAnime"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="动画" />
+
+        <Button
+            android:id="@+id/typeBtnMusic"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="音乐" />
+
+        <Button
+            android:id="@+id/typeBtnGame"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="游戏" />
+
+        <Button
+            android:id="@+id/typeBtnSanjigen"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="三次元" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchResultView"
         android:layout_width="match_parent"
@@ -28,5 +97,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchTextField" />
+        app:layout_constraintTop_toBottomOf="@+id/typeToggleBtnGroup" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,6 +27,7 @@ class SearchFragment:Fragment() {
     private var listSize = 0
     private var currentAmount = 0
     private var searchText : String? = null
+    private var searchType : Int = 0
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,7 +40,7 @@ class SearchFragment:Fragment() {
     override fun onStart() {
         super.onStart()
         binding.searchResultView.layoutManager = LinearLayoutManager(context)
-        val adapter = SearchViewAdapter(resultList)
+        val adapter = SearchViewAdapter(resultList, requireContext())
         binding.searchResultView.adapter = adapter
         bgmViewModel = ViewModelProvider(requireActivity(), BgmDataViewModelFactory(
                 BgmRepositoryImpl(BgmAPI.service)
@@ -47,7 +48,7 @@ class SearchFragment:Fragment() {
         bgmViewModel.searchResult.observe(this, {
             val parserResult = SearchJsonHandler(it).parseJson()
             resultList.addAll(parserResult)
-            Log.d("here", resultList.map{it.toString()}.reduce { acc, s -> acc + " " + s })
+//            Log.d("here", resultList.map{it.toString()}.reduce { acc, s -> acc + " " + s })
             adapter.notifyItemInserted(listSize)
 //            adapter.notifyDataSetChanged()
             listSize += parserResult.size
@@ -59,21 +60,47 @@ class SearchFragment:Fragment() {
                     super.onScrollStateChanged(recyclerView, newState)
                     if (!recyclerView.canScrollVertically(1)) {
                         currentAmount += 10
-                        if (searchText != null) {
-                            bgmViewModel.loadSearchResultAsync(searchText!!, currentAmount)
-                        }
+                        loadAsyncWithType()
+//                        if (searchText != null) {
+//                            bgmViewModel.loadSearchResultAsync(searchText!!, currentAmount)
+//
+//                        }
                     }
                 }
             }
         )
+        binding.typeToggleBtnGroup.check(R.id.typBtnAll)
+        binding.typeToggleBtnGroup.addOnButtonCheckedListener { group, checkedId, _ ->
+            Log.d("TAG", checkedId.toString())
+            when(checkedId) {
+                R.id.typBtnAll -> searchType = 0
+                R.id.typeBtnBook -> searchType = 1
+                R.id.typeBtnAnime -> searchType = 2
+                R.id.typeBtnMusic -> searchType = 3
+                R.id.typeBtnGame -> searchType = 4
+                R.id.typeBtnSanjigen -> searchType = 6
+            }
+        }
         binding.searchTextField.editText?.doOnTextChanged { text, _, _, _->
             if (searchText == null || text.toString().trimIndent() != searchText) {
                 currentAmount = 0
                 listSize = 0
-                resultList = mutableListOf()
+                resultList.clear()
                 adapter.notifyDataSetChanged()
                 searchText = text.toString().trimIndent()
+//                bgmViewModel.loadSearchResultAsync(searchText!!, currentAmount)
+                loadAsyncWithType()
+            }
+        }
+    }
+
+    fun loadAsyncWithType() {
+        if (searchText != null) {
+            if (searchType == 0) {
                 bgmViewModel.loadSearchResultAsync(searchText!!, currentAmount)
+            } else {
+                Log.d("TAG", searchType.toString())
+                bgmViewModel.loadSearchResultWithTypeAsync(searchText!!, currentAmount, searchType)
             }
         }
     }

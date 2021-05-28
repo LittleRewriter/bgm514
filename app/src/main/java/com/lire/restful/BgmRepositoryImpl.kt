@@ -34,6 +34,18 @@ internal class BgmRepositoryImpl constructor(private val api:BgmAPI) : BgmReposi
             }
         }
 
+    override suspend fun getSearchResultWithTypeAsync(content: String, start : Int, type: Int): Resource<String> =
+        withContext(Dispatchers.IO) {
+            try {
+                logCoroutine("GetResearchInfo", coroutineContext)
+                val searchResultDeferred = async { api.getSearchResult(content, start, type).execute() }
+                val searchResultResponse = searchResultDeferred.await()
+                Resource.success(searchResultResponse.body().toString())
+            } catch (e : Exception) {
+                Resource.error(null, "failed")
+            }
+        }
+
     override suspend fun getSearchResultAsync(content: String, start: Int): Resource<String> =
         withContext(Dispatchers.IO) {
             try {
