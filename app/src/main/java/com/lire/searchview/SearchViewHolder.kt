@@ -13,6 +13,11 @@ import com.lire.baseappearance.R
 import com.lire.baseappearance.SubjectActivity
 import com.lire.subject.SubjectInfo
 
+/**
+ * 搜索结果RecyclerViewHolder
+ *
+ */
+
 class SearchViewHolder private constructor(itemView : View) : RecyclerView.ViewHolder(itemView){
     private val searchPicture = itemView.findViewById<ImageView>(R.id.searchPicture)
     private var searchName = itemView.findViewById<TextView>(R.id.searchName)

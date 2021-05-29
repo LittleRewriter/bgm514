@@ -16,16 +16,30 @@ import coil.load
 import com.lire.baseappearance.R
 import com.lire.baseappearance.SubjectActivity
 
+/**
+ * RecycleView的Holder
+ *
+ */
+
 class CalendarViewHolder private constructor(itemView : View)
     : RecyclerView.ViewHolder(itemView){
+
+    // 图片
     private val bangumiPic = itemView.findViewById<ImageView>(R.id.bangumiPicture)
+    // 名称
     private val bangumiName = itemView.findViewById<TextView>(R.id.bangumiName)
+    // 排名
     private val bangumiRank = itemView.findViewById<TextView>(R.id.bangumiRank)
+
+    /**
+     * 将数据类进行绑定
+     *
+     * @param item 数据
+     * @param context context
+     */
 
     fun bind(item : BangumiMsg, context: Context) {
         bangumiName.text = item.bangumiName
-//        Log.d("TAG", "after")
-//        Log.d("TAG", Resources.getSystem().getString(R.string.bangumi_calender_list_ranking))
         bangumiRank.text = "均分：${item.avgScore}  在看：${item.collection}"
         bangumiPic.load(item.picURL)
         itemView.setOnClickListener {
@@ -34,8 +48,6 @@ class CalendarViewHolder private constructor(itemView : View)
             }
             context.startActivity(intent)
         }
-//        bangumiRank.text = Resources.getSystem().getString(R.string.bangumi_calender_list_ranking, item.avgScore.toString(), item.collection.toString())
-//        bangumiRank.text = "qwq"
 
     }
 

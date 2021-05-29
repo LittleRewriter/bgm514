@@ -7,6 +7,11 @@ import com.lire.utils.*
 import org.json.JSONArray
 import org.json.JSONObject
 
+/**
+ * 生成Calendar的Json Handler
+ *
+ * @property JSONstr JSON String
+ */
 
 class CalendarJsonHandler (val JSONstr : String) {
     fun parseJson() {
@@ -21,7 +26,6 @@ class CalendarJsonHandler (val JSONstr : String) {
                         val item = it?.getAsNullableJsonObject()
                         val id = item?.get("id")?.getAsNullableString()?:""
                         val url = item?.get("url")?.getAsNullableString()?:""
-                        val type = item?.get("type")?.getAsNullableInt()?:2
                         val name = item?.get("name")?.getAsNullableString()?:""
                         val name_cn = item?.get("name_cn")?.getAsNullableString()?:""
                         val air_weekday = item?.get("air_weekday")?.getAsNullableInt()?:0

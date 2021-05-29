@@ -7,6 +7,12 @@ import com.lire.subject.SubjectInfo
 import com.lire.subject.TypeOfSubject
 import com.lire.utils.*
 
+/**
+ * 处理项目的Json
+ *
+ * @property JSONstr Json String
+ */
+
 class SubjectJsonParser(val JSONstr : String) {
     fun parseJson() : SubjectInfo? {
         try {
@@ -36,7 +42,6 @@ class SubjectJsonParser(val JSONstr : String) {
                     collection?.get("dropped")?.getAsNullableInt() ?:0
                 ))
 //                Log.d("Subject", "p1")
-                val t = obj?.get("crt")
                 val character_list = obj?.get("crt")?.getAsNullableJsonArray()
                 val character_list_arr = ArrayList<Chara>()
                 character_list?.forEach {

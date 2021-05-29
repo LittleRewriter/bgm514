@@ -4,44 +4,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.lire.netdatahandler.SubjectJsonParser
 
-class SubjectViewModel : ViewModel() {
-    var subjectInfo : MutableLiveData<SubjectInfo> = MutableLiveData()
-    var isClickToolBar : MutableLiveData<Boolean> = MutableLiveData(false)
-    fun createSubject() {
-//        subjectInfo.value = SubjectJsonParser(subjectStr).parseJson()
-    }
-    fun getTypeName(e : TypeOfSubject) : String =
-        when(e) {
-            TypeOfSubject.BOOK -> "书籍"
-            TypeOfSubject.ANIME -> "动画"
-            TypeOfSubject.GAME -> "游戏"
-            TypeOfSubject.REAL -> "三次元"
-            TypeOfSubject.MUSIC -> "音乐"
-        }
-    fun getTVValue() : String{
-        val typeName = when(subjectInfo.value?.type) {
-            TypeOfSubject.BOOK -> "书籍"
-            TypeOfSubject.ANIME -> "动画"
-            TypeOfSubject.GAME -> "游戏"
-            TypeOfSubject.REAL -> "三次元"
-            TypeOfSubject.MUSIC -> "音乐"
-            null -> ""
-        }
-        val tvValue = "${typeName}   ${subjectInfo.value?.avgScore ?: "未知"}（${subjectInfo.value?.votes ?: "???"} votes）" +
-                "\n rank ${subjectInfo.value?.rank ?: "未知"}"
-        return tvValue
-    }
+/**
+ * 托管subject的View Model
+ *
+ */
 
-    fun getCollectValue(typ : Int) : String {
-        val pre = when(typ) {
-            0 -> "想看"
-            1 -> "看过"
-            2 -> "在看"
-            3 -> "搁置"
-            4 -> "抛弃"
-            else -> ""
-        }
-        return "$pre ： ${subjectInfo.value?.collectionAmount?.get(typ) ?: ""}"
-    }
+class SubjectViewModel : ViewModel() {
+    // 节目信息
+    var subjectInfo : MutableLiveData<SubjectInfo> = MutableLiveData()
+    // 是否点击了toolbar
+    var isClickToolBar : MutableLiveData<Boolean> = MutableLiveData(false)
 
 }

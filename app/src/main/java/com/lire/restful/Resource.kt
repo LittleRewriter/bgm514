@@ -1,5 +1,14 @@
 package com.lire.restful
 
+/**
+ * 状态辅助类
+ *
+ * @param T 类型
+ * @property status 状态信息
+ * @property data 结果
+ * @property message 失败讯息
+ */
+
 data class Resource<out T>(val status : Status, val data: T?, val message : String?) {
     companion object {
         fun<T> success(data : T) : Resource<T> = Resource(status = Status.SUCCESS, data = data, message = null)

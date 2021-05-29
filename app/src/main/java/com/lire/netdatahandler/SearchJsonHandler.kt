@@ -8,6 +8,12 @@ import com.lire.utils.getAsNullableJsonArray
 import com.lire.utils.getAsNullableJsonObject
 import com.lire.utils.getAsNullableString
 
+/**
+ * 处理搜索的Json
+ *
+ * @property JSONStr Json String
+ */
+
 class SearchJsonHandler (val JSONStr : String){
     fun parseJson() : List<SearchResult> {
         try {

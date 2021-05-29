@@ -13,9 +13,18 @@ import com.lire.baseappearance.R
 import com.lire.baseappearance.SubjectActivity
 import com.lire.userinfo.UserCollection
 
+/**
+ * 收藏的View Holder
+ *
+ */
+
 class CollectionViewHolder private constructor(itemView : View) : RecyclerView.ViewHolder(itemView){
+
+    // 收藏的图片
     private val collectionPicture = itemView.findViewById<ImageView>(R.id.collectionPicture)
+    // 名称
     private var collectionName = itemView.findViewById<TextView>(R.id.collectionName)
+    // 在看人数
     private var collectionDoAmount = itemView.findViewById<TextView>(R.id.collectionDoAmount)
 
     fun bind(item : UserCollection, context : Context) {

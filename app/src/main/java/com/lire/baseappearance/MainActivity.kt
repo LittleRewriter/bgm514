@@ -28,16 +28,8 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var tvInfo : TextView
-
-    val tag : String = "LOG"
-
     private lateinit var binding : ActivityMainBinding
     private lateinit var bgmViewModel : BgmDataViewModel
-
-    private fun formatDate(l: Long): String {
-        return SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format(Date(l))
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        // 创建ViewModel
         bgmViewModel = ViewModelProvider(this, BgmDataViewModelFactory(
                 BgmRepositoryImpl(BgmAPI.service))).get(BgmDataViewModel::class.java)
 
@@ -55,6 +47,7 @@ class MainActivity : AppCompatActivity() {
             bgmViewModel.loadUserInfoAsync(usernameStr)
         }
 
+        // 启用导航栏
         with(binding) {
             toolbar.title = "bgm514"
             setSupportActionBar(toolbar)
@@ -63,7 +56,13 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun loadUsername() : String {
+    /**
+     * 从存储中读取username，并加载到viewmodel中
+     *
+     * @return String
+     */
+
+    private fun loadUsername() : String {
         val pref = getSharedPreferences(
             PREF_FILE_NAME,
             Context.MODE_PRIVATE

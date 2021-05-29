@@ -5,6 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.lire.userinfo.UserCollection
 
+/**
+ * 收藏的Recycler View
+ *
+ * @property data 数据
+ * @property context context
+ */
+
 class CollectionViewAdapter(private val data : List<UserCollection>, private val context : Context) : RecyclerView.Adapter<CollectionViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionViewHolder {
         return CollectionViewHolder.from(parent)

@@ -22,11 +22,22 @@ import com.lire.restful.BgmDataViewModelFactory
 import com.lire.restful.BgmRepositoryImpl
 import java.util.*
 
+/**
+ * 每日放送的Fragment相关代码
+ * @author lire
+ *
+ */
+
 class TimelineFragment:Fragment() {
 
     private lateinit var binding : FragmentTimelineBinding
     private lateinit var bgmViewModel : BgmDataViewModel
     private var selectedDate : Int = 0
+
+    /**
+     * 获取每一周的第一天是哪一天
+     * @return 第一天
+     */
 
     fun getFirstDayOfWeek() : Calendar {
         val calendar = Calendar.getInstance()
@@ -41,6 +52,13 @@ class TimelineFragment:Fragment() {
         return calendar
     }
 
+    /**
+     * 获取Button中的String
+     *
+     * @param id 第几天
+     * @return 对应的字符串
+     */
+
     fun getTargetString(id: Int) : String {
         when(id) {
             1 -> return getString(R.string.monday)
@@ -54,19 +72,29 @@ class TimelineFragment:Fragment() {
         }
     }
 
+    /**
+     * 更新Button的名字，并设置当前的选择
+     *
+     * @param firstDay 第一天
+     * @param adapter 用于RecyclerView更新
+     */
+
     fun updateBottomName(firstDay : Calendar, adapter: CalendarViewAdapter) {
         with(binding) {
             val children : Sequence<View> = TimeTable.children
             var t = 1
+            // 对每一个按钮进行遍历
             for ((idx, ele) in children.withIndex()) {
                 val pattern = getTargetString(t)
                 (ele as Button).text = String.format(pattern, firstDay.get(Calendar.MONTH)+1, firstDay.get(Calendar.DAY_OF_MONTH))
-                (ele as Button).setOnClickListener {
+                // 设置点击事件
+                ele.setOnClickListener {
                     if (idx != selectedDate) {
                         selectedDate = idx
                         adapter.resetData(BangumiMsgManager.getInstance().getMsgsForWeekDay(idx))
                     }
                 }
+                // 获取当前按钮
                 if (firstDay.get(Calendar.DAY_OF_MONTH) == Calendar.getInstance().get(Calendar.DAY_OF_MONTH)) {
                     TimeTable.check(ele.id)
                     selectedDate = idx
@@ -80,11 +108,16 @@ class TimelineFragment:Fragment() {
         }
     }
 
+    /**
+     * View Create时的事件，初始化Binding
+     *
+     */
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
 
         binding = FragmentTimelineBinding.inflate(layoutInflater)
@@ -92,6 +125,11 @@ class TimelineFragment:Fragment() {
 //        val root = inflater.inflate(R.layout.fragment_timeline, container, false)
         return binding.root
     }
+
+    /**
+     * 完成各种初始化
+     *
+     */
 
     override fun onStart() {
         super.onStart()

@@ -8,6 +8,12 @@ import com.lire.utils.getAsNullableJsonArray
 import com.lire.utils.getAsNullableJsonObject
 import com.lire.utils.getAsNullableString
 
+/**
+ * 处理Collection的Json
+ *
+ * @property JSONStr Json字符串
+ */
+
 class CollectionJsonHandler(val JSONStr : String) {
     fun parseJson() : List<UserCollection> {
         try {

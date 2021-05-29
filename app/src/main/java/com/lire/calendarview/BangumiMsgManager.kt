@@ -1,5 +1,11 @@
 package com.lire.calendarview
 
+/**
+ * Bangumi信息的管理类（单例）
+ * 可能写这个类的时候忘了Object的存在...
+ *
+ */
+
 class BangumiMsgManager private constructor(){
     private val dayBangumiMsg = List(7){
         mutableListOf<BangumiMsg>()

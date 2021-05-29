@@ -6,6 +6,12 @@ import com.lire.utils.getAsNullableJsonObject
 import com.lire.utils.getAsNullableString
 import java.lang.Exception
 
+/**
+ * User Info
+ *
+ * @property JSONStr JsonStr
+ */
+
 class UserInfoJsonParser(val JSONStr : String) {
     fun parseJson() : UserInfo? {
         try {
