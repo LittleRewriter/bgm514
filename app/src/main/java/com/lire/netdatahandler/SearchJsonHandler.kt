@@ -21,9 +21,9 @@ class SearchJsonHandler (val JSONStr : String){
                 val typStr = when(typ) {
                     1 -> "书籍"
                     2 -> "动画"
-                    3 -> "游戏"
-                    4 -> "三次元"
-                    5 -> "音乐"
+                    3 -> "音乐"
+                    4 -> "游戏"
+                    6 -> "三次元"
                     else -> ""
                 }
                 val jp_name = e?.get("name")?.getAsNullableString()?:""

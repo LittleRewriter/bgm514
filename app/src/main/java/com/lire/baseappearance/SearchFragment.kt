@@ -68,14 +68,24 @@ class SearchFragment:Fragment() {
         binding.typeToggleBtnGroup.check(R.id.typBtnAll)
         binding.typeToggleBtnGroup.addOnButtonCheckedListener { group, checkedId, _ ->
             Log.d("TAG", checkedId.toString())
-            when(checkedId) {
-                R.id.typBtnAll -> searchType = 0
-                R.id.typeBtnBook -> searchType = 1
-                R.id.typeBtnAnime -> searchType = 2
-                R.id.typeBtnMusic -> searchType = 3
-                R.id.typeBtnGame -> searchType = 4
-                R.id.typeBtnSanjigen -> searchType = 6
+            val currType = when(checkedId) {
+                R.id.typBtnAll -> 0
+                R.id.typeBtnBook -> 1
+                R.id.typeBtnAnime -> 2
+                R.id.typeBtnMusic -> 3
+                R.id.typeBtnGame -> 4
+                R.id.typeBtnSanjigen -> 6
+                else -> 0
             }
+            if (currType != searchType) {
+                searchType = currType
+                currentAmount = 0
+                listSize = 0
+                resultList.clear()
+                adapter.notifyDataSetChanged()
+                loadAsyncWithType()
+            }
+
         }
         binding.searchTextField.editText?.doOnTextChanged { text, _, _, _->
             if (searchText == null || text.toString().trimIndent() != searchText) {
